@@ -1,10 +1,10 @@
 package cerror
 
-type EBuff []interface{}
-
 type Catcher interface {
 	Catch(func(interface{}))
 }
+
+type EBuff []interface{}
 
 func Throw(err ...interface{}) Catcher {
 	buff := EBuff(err)
