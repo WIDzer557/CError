@@ -5,7 +5,7 @@
 Throw(Test()).
 	Catch(func(err interface{}) {
 		if err != nil {
-			fmt.Printf(err)
+			fmt.Println(err)
 		}
 })
 
