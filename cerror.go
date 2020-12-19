@@ -4,14 +4,14 @@ type Catcher interface {
 	Catch(func(interface{}))
 }
 
-type EBuff []interface{}
+type EBuffer []interface{}
 
 func Throw(err ...interface{}) Catcher {
-	buff := EBuff(err)
+	buff := EBuffer(err)
 	return &buff
 }
 
-func (buff *EBuff) Catch(catcher func(err interface{})) {
+func (buff *EBuffer) Catch(catcher func(err interface{})) {
 	for _, err := range *buff {
 		catcher(err)
 	}
