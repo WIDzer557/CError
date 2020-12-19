@@ -3,7 +3,7 @@ package cerror
 type EBuffer []interface{}
 
 func Throw(err ...interface{}) *EBuffer {
-	buff := append(*new(EBuffer), err...)
+	buff := EBuffer(err)
 	return &buff
 }
 
