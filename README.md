@@ -2,10 +2,24 @@
 
 **Example custom function:**
 ```go
-Throw(fmt.Errorf("404 - Page not found..")).
+Throw(Test()).
 	Catch(func(err interface{}) {
 		if err != nil {
 			fmt.Printf(err)
 		}
 })
+
+func Test() error {
+	return fmt.Errorf("404 - Page not found..")
+}
+```
+
+**Example print function:**
+```go
+Throw(Test()).
+	Catch(catcher.Print)
+
+func Test() error {
+	return fmt.Errorf("404 - Page not found..")
+}
 ```
