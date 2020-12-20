@@ -2,13 +2,17 @@ package cerror
 
 type EBuffer []interface{}
 
-func Throw(err ...interface{}) *EBuffer {
+type Catcher interface {
+	Catch(func(interface{}))
+}
+
+func Throw(err ...interface{}) Catcher {
 	buff := EBuffer(err)
 	return &buff
 }
 
-func (buff *EBuffer) Catch(catcher func(err interface{})) {
+func (buff *EBuffer) Catch(fn func(err interface{})) {
 	for _, err := range *buff {
-		catcher(err)
+		fn(err)
 	}
 }
